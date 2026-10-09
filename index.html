@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Fire Panel</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #000;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+header {
+    padding: 28px 10px;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 23px 8px;
+    padding: 10px;
+}
+
+.item {
+    color: white;
+    text-decoration: none;
+    min-width: 0;
+    cursor: pointer;
+}
+
+.icon {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 2px solid #252535;
+    background: linear-gradient(135deg, #272044, #08080e);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-size: clamp(23px, 7vw, 42px);
+    transition: .2s;
+}
+
+.icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.item:active .icon {
+    transform: scale(.9);
+}
+
+.name {
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 9px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.snow {
+    position: fixed;
+    top: -20px;
+    color: white;
+    pointer-events: none;
+    animation: fall linear infinite;
+    z-index: 10;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+    }
+}
+
+footer {
+    margin-top: 55px;
+    padding: 25px 10px;
+    border-top: 1px solid #222;
+    color: #aaa;
+}
+</style>
+</head>
+
+<body>
+
+<header>Fayllar ro‘yxati — kerakli bo‘limni tanlang ❄️</header>
+
+<div class="grid" id="grid"></div>
+
+<footer>
+    <h3>Boshqa kanallarimiz</h3>
+    <p>
+        <a href="https://youtube.com" style="color:red">YouTube</a>
+        &nbsp; | &nbsp;
+        <a href="https://t.me" style="color:#29a9e8">Telegram</a>
+        &nbsp; | &nbsp;
+        <a href="https://instagram.com" style="color:#e84ba5">Instagram</a>
+    </p>
+</footer>
+
+<script>
+const files = [
+    ["🎁", "GIFT FF BETA", "files/gift-ff.apk"],
+    ["▲", "Ayugram PRO", "files/ayugram.apk"],
+    ["💎", "FF bepul olmos", "files/olmos.apk"],
+    ["❄️", "Freeze VPN FF", "files/freeze-vpn.apk"],
+    ["⚡", "120 FPS FF", "files/120fps.apk"],
+
+    ["🤖", "Apk Editor", "files/apk-editor.apk"],
+    ["🎮", "120 FPS PUBG 4.6", "files/pubg-fps.apk"],
+    ["144", "144 FPS FF", "files/144fps.apk"],
+    ["⚙️", "PRO SETTING FF", "files/pro-setting.apk"],
+    ["🔥", "OLD FF 2022", "files/old-ff.apk"],
+
+    ["🛡️", "Defender PC", "files/defender.zip"],
+    ["🔫", "OFFLINE FF 2017", "files/offline-ff.apk"],
+    ["🎯", "FF Faylchi", "files/ff-faylchi.apk"],
+    ["📊", "FF Nastroyka", "files/nastroyka.zip"],
+    ["🪙", "Bepul UC PUBG Mobile", "files/uc.apk"],
+
+    ["🚗", "GTA V PC", "files/gta-v.zip"],
+    ["👕", "FF 1-2 OLD SKIN", "files/old-skin.zip"],
+    ["🎮", "OLD FF 2018", "files/old-ff-2018.apk"],
+    ["🖥️", "PC ESP FREE", "files/pc-esp.zip"],
+    ["🎖️", "Pubg OLD 2019", "files/pubg-old.apk"],
+
+    ["🦊", "Root Module", "files/root-module.zip"],
+    ["🔧", "Shizuku APK", "files/shizuku.apk"],
+    ["📷", "Soxta kamera", "files/camera.apk"],
+    ["🚫", "Soxta o‘yin", "files/fake-game.apk"],
+    ["✈️", "Telegraph PRO", "files/telegraph.apk"],
+
+    ["💃", "Tez Emote FF", "files/tez-emote.apk"]
+];
+
+const grid = document.getElementById("grid");
+
+files.forEach(([emoji, name, url]) => {
+    const item = document.createElement("a");
+    item.className = "item";
+    item.href = url;
+
+    const icon = document.createElement("div");
+    icon.className = "icon";
+    icon.textContent = emoji;
+
+    const label = document.createElement("span");
+    label.className = "name";
+    label.textContent = name;
+
+    item.append(icon, label);
+    grid.appendChild(item);
+});
+
+// Qor yog'ishi
+for (let i = 0; i < 22; i++) {
+    const snow = document.createElement("div");
+    snow.className = "snow";
+    snow.textContent = "❄";
+
+    snow.style.left = Math.random() * 100 + "vw";
+    snow.style.animationDuration = (5 + Math.random() * 8) + "s";
+    snow.style.animationDelay = (-Math.random() * 10) + "s";
+    snow.style.fontSize = (10 + Math.random() * 12) + "px";
+
+    document.body.appendChild(snow);
+}
+</script>
+
+</body>
+</html>
